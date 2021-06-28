@@ -1,0 +1,5 @@
+{% extends "layout.html" %} {% block content %}
+<h1>Contas a pagar</h1>
+{% for conta in contas %}
+<div class="flash">{{ conta.valor }}</div>
+{% endfor %} {% endblock content %}

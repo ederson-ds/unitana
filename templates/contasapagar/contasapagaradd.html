@@ -1,0 +1,43 @@
+{% extends "layout.html" %} {% block content %}
+<h1>Contas a pagar Inserir</h1>
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %}
+<div class="alert alert-{{ category }}">{{ message }}</div>
+{% endfor %} {% endif %} {% endwith %}
+<form method="POST" action="" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            {{ form.valor.label(class="form-control-label") }} 
+            {% if form.valor.errors %} 
+                {{ form.valor(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.valor.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+            {{ form.valor(class="form-control") }} 
+            {% endif %}
+        </div>
+        <div class="col-md-4 mb-3">
+            {{ form.emissao.label(class="form-control-label") }}
+            {% if form.emissao.errors %} 
+                {{ form.emissao(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.emissao.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+            {{ form.emissao(class="form-control") }} 
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </div>
+</form>
+{% endblock content %}
